@@ -5,14 +5,14 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    
   }
 
   componentDidMount() {
     BooksAPI.getAll()
-      .then((books) => {
+      .then((contacts) => {
         this.setState(() => ({
-          books
+          contacts
         }))
       })
     }
@@ -25,18 +25,15 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-               <BookShelf
-            	books={this.state.books}            	
-          		/>
+              <BookShelf/>
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
           </div>
-       
+    
       </div>  
     )}
 }
 
 export default BooksApp
-
