@@ -1,5 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
+import BookShelf from './components/BookShelf'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -25,7 +26,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
                <BookShelf
-            	contacts={this.state.books}            	
+            	books={this.state.books}            	
           		/>
             </div>
             <div className="open-search">
@@ -36,3 +37,6 @@ class BooksApp extends React.Component {
       </div>  
     )}
 }
+
+export default BooksApp
+
