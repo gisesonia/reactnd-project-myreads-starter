@@ -5,14 +5,14 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    
+    books: []
   }
 
   componentDidMount() {
     BooksAPI.getAll()
       .then((contacts) => {
         this.setState(() => ({
-          contacts
+          books
         }))
       })
     }
