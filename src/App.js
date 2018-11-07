@@ -1,16 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './components/BookShelf'
 import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books:[]
+  }
+
+static propTypes = {
+    books: PropTypes.array.isRequired
   }
 
   componentDidMount() {
     BooksAPI.getAll()
-      .then((contacts) => {
+      .then((books) => {
         this.setState(() => ({
           books
         }))
