@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './components/BookShelf'
 import './App.css'
@@ -9,13 +8,10 @@ class BooksApp extends React.Component {
     books:[]
   }
 
-static propTypes = {
-    books: PropTypes.array.isRequired
-  }
-
   componentDidMount() {
     BooksAPI.getAll()
       .then((books) => {
+        console.log(books)
         this.setState(() => ({
           books
         }))
@@ -30,7 +26,9 @@ static propTypes = {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <BookShelf/>
+              <BookShelf 
+       		  	books={this.state.books}
+       		  />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
