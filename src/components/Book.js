@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+
+ state = {
+            query: '',
+          }
+
+static propTypes = {
+    books: PropTypes.array.isRequired
+  }
 
 class Book extends Component {
     render() {
         const { books } = this.props;
-        state = {
-            query: ''
-          }
+       
         const showingBooks =
             books.filter((b) => (
                 b.name.toLowerCase().includes(query.toLowerCase())
             ))
         return (
+            <div>
             {
                 showingBooks.map((book) => (
                     <div key={book.id} className='book'>
@@ -35,6 +43,7 @@ class Book extends Component {
                     </div>
                 ))
             }
+            </div>
         )
     }
 }
