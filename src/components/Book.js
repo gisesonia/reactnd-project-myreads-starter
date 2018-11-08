@@ -2,23 +2,16 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   
-    render() {
-        
+    render() {  
+       console.log(this.props)
        
-        const showingBooks =
-            books.filter((b) => (
-                b.name.toLowerCase()
-            ))
         return (
             <div>
-            {
-                showingBooks.map((book) => (
+            {this.props.books.map((book) => (
                     <div key={book.id} className='book'>
                         <div
                             className='book-top'
-                            style={{
-                                width: 128, height: 193, backgroundImage: url(${book.thumbnail})
-                            }}
+                            style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}
                         >
                             <div className="book-shelf-changer">
                                 <select>
@@ -30,8 +23,8 @@ class Book extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="book-title">{book.title}</div>
-                        <div className="book-authors">{book.authors}</div>
+                        <div className="book-title">To Kill a Mockingbird</div>
+                        <div className="book-authors">Harper Lee</div>
                     </div>
                 ))
             }
