@@ -4,28 +4,27 @@ import Book from './Book'
 class BookShelf extends Component {
    constructor(props) {
    super(props);
-
  }
   
     render() {
       
       const { books } = this.props;
       
-        return (
-    
+        return (          
+       <div className="bookshelf">
       {this.props.books.map((book) => (
-          <div className="bookshelf">
-           <h2 className="bookshelf-title">Currently Reading</h2>
+        <div>
+          <h2 className="bookshelf-title">Currently Reading</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         <li>
                             <Book />
                         </li>
                     </ol>
-                </div>    </div>         
-        ))}
-   )    
-
-    }
+          </div>
+         </div>
+          ))}</div>)
+	}
 }
+          
 export default BookShelf
