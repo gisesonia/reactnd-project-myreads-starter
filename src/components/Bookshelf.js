@@ -5,9 +5,6 @@ class BookShelf extends Component {
    constructor(props) {
    super(props);
 
-   this.state = {
-     books: []
-   };
  }
   
     render() {
@@ -15,9 +12,9 @@ class BookShelf extends Component {
       const { books } = this.props;
       
         return (
-          
-          <div className="bookshelf">
+    
       {this.props.books.map((book) => (
+          <div className="bookshelf">
            <h2 className="bookshelf-title">Currently Reading</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
@@ -25,14 +22,10 @@ class BookShelf extends Component {
                             <Book />
                         </li>
                     </ol>
-                </div>
-            </div>
-        ))}</div>
-   )
-          
-            
-               
-        )
+                </div>    </div>         
+        ))}
+   )    
+
     }
 }
 export default BookShelf
