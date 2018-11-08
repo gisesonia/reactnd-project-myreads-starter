@@ -4,6 +4,7 @@ import BookShelf from './components/BookShelf'
 import './App.css'
 
 class BooksApp extends React.Component {
+
   state = {
     books: []
   }
@@ -19,6 +20,23 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    const bookshelf = [
+      {
+        value: 'currentlyReading',
+        title: 'Currently Reading',
+        id: 1
+      },
+      {
+        value: 'wantToRead',
+        title: 'Want to Read',
+        id: 2
+      },
+      {
+        value: 'read',
+        title: 'Read',
+        id: 3
+      }
+    ]
     return (
       <div className="app">
         <div className="list-books">
@@ -26,9 +44,12 @@ class BooksApp extends React.Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-            <BookShelf
-              books={this.state.books}    
-            />
+            {bookshelf.map(shelf =>
+              <BookShelf key={shelf.id}
+                titulo={shelf.title}
+                value={shelf.value}
+                livros={this.state.books} />
+            )}
           </div>
         </div>
       </div>
@@ -37,3 +58,4 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp
+
