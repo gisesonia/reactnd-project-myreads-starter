@@ -18,7 +18,17 @@ class BooksApp extends React.Component {
         }))
       })
   }
-
+ changeShelf = (changedBook, shelf) => {
+    BooksAPI.update(changedBook, shelf).then(response => {
+      changedBook.shelf = shelf;
+      this.setState(prevState => ({
+        books: prevState.books
+        .filter(book => book.id !== changedBook.id)
+        .concat(changedBook)
+      }));
+    });
+  };
+ 
   render() {
     const bookshelf = [
       {
@@ -48,7 +58,9 @@ class BooksApp extends React.Component {
               <BookShelf key={shelf.id}
                 titulo={shelf.title}
                 value={shelf.value}
-                livros={this.state.books} />
+                books={this.state.books}
+                changeShelf={this.changeShelf}
+               />
             )}
           </div>
         </div>
@@ -58,4 +70,3 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp
-
