@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 
- state = {
-            query: '',
-          }
+class Book extends Component {  
+   
+  updateShelf = event =>
+    this.props.changeShelf(this.props.book, event.target.value);
 
-static propTypes = {
-    books: PropTypes.array.isRequired
-  }
-
-class Book extends Component {
-    render() {
-        const { books } = this.props;
-       
-        const showingBooks =
-            books.filter((b) => (
-                b.name.toLowerCase().includes(query.toLowerCase())
-            ))
+    render() {  
+      const { book } = this.props;
+      
+     console.log(this.props)
         return (
-            <div>
-            {
-                showingBooks.map((book) => (
-                    <div key={book.id} className='book'>
-                        <div
-                            className='book-top'
-                            style={{
-                                width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
-                            }}
+              <div className='book'>
+                        <div className='book-top'
+                            style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}
                         >
                             <div className="book-shelf-changer">
-                                <select>
+                                <select onChange={this.updateShelf} >
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
@@ -38,12 +24,9 @@ class Book extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="book-title">To Kill a Mockingbird</div>
-                        <div className="book-authors">Harper Lee</div>
+                        <div className="book-title">{book.title}</div>
+                        <div className="book-authors">{book.authors}</div>
                     </div>
-                ))
-            }
-            </div>
         )
     }
 }
