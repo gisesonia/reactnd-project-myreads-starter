@@ -20,17 +20,17 @@ class BooksApp extends React.Component {
         }))
       })
   }
- changeShelf = (changedBook, shelf) => {
+  changeShelf = (changedBook, shelf) => {
     BooksAPI.update(changedBook, shelf).then(response => {
       changedBook.shelf = shelf;
       this.setState(prevState => ({
         books: prevState.books
-        .filter(book => book.id !== changedBook.id)
-        .concat(changedBook)
+          .filter(book => book.id !== changedBook.id)
+          .concat(changedBook)
       }));
     });
   };
- 
+
   render() {
     const bookshelf = [
       {
@@ -56,20 +56,23 @@ class BooksApp extends React.Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-          <Route exact path='/' render={() => (
-             {bookshelf.map(shelf =>
-              <BookShelf key={shelf.id}
-                titulo={shelf.title}
-                value={shelf.value}
-                books={this.state.books}
-                changeShelf={this.changeShelf}
-               />
-            )}
-      )} />
-           
+
+            <Route exact path='/' render={() => (
+              <div>
+                {
+                  bookshelf.map(shelf =>
+                    <BookShelf key={shelf.id}
+                      titulo={shelf.title}
+                      value={shelf.value}
+                      books={this.state.books}
+                      changeShelf={this.changeShelf}
+                    />)}
+              </div>
+            )} />
+            <Route path='/create' component={SearchBar} />
           </div>
+
         </div>
-        <Route path='/create' component={SearchBar} />
       </div>
     )
   }
