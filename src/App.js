@@ -20,13 +20,13 @@ class BooksApp extends React.Component {
         }))
       })
   }
-  changeShelf = (changedBook, shelf) => {
-    BooksAPI.update(changedBook, shelf).then(response => {
-      changedBook.shelf = shelf;
+  newShelf = (newBook, shelf) => {
+    BooksAPI.update(newBook, shelf).then(response => {
+      newBook.shelf = shelf;
       this.setState(prevState => ({
         books: prevState.books
-          .filter(book => book.id !== changedBook.id)
-          .concat(changedBook)
+          .filter(book => book.id !== newBook.id)
+          .concat(newBook)
       }));
     });
   };
@@ -51,28 +51,28 @@ class BooksApp extends React.Component {
     ]
     return (
       <div className="app">
-       <div className="list-books">
-       <div className="list-books-title">
+        <div className="list-books">
+          <div className="list-books-title">
             <h1>MyReads</h1>
-        </div>
-        <Router>
-        <Route exact path='/' render={() => (
-        <div className="list-books-content">
-        {
+          </div>
+          <Router>
+            <Route exact path='/' render={() => (
+              <div className="list-books-content">
+                {
                   bookshelf.map(shelf =>
                     <BookShelf key={shelf.id}
                       titulo={shelf.title}
                       value={shelf.value}
                       books={this.state.books}
-                      changeShelf={this.changeShelf}
+                      newShelf={this.newShelf}
                     />)}
+              </div>
+            )} />
+          </Router>
+          <Router>
+            <Route path='/create' component={SearchBar} />
+          </Router>
         </div>
-        )} />
-        </Router>
-        <Router>
-        <Route path='/create' component={SearchBar} />      
-      </Router>
-      </div>
       </div>
     )
   }
