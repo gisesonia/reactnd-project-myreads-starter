@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import {  BrowserRouter as Router, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './components/BookShelf'
 import SearchBar from './components/SearchBar'
@@ -51,15 +51,14 @@ class BooksApp extends React.Component {
     ]
     return (
       <div className="app">
-        <div className="list-books">
-          <div className="list-books-title">
+       <div className="list-books">
+       <div className="list-books-title">
             <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-
-            <Route exact path='/' render={() => (
-              <div>
-                {
+        </div>
+        <Router>
+        <Route exact path='/' render={() => (
+        <div className="list-books-content">
+        {
                   bookshelf.map(shelf =>
                     <BookShelf key={shelf.id}
                       titulo={shelf.title}
@@ -67,12 +66,13 @@ class BooksApp extends React.Component {
                       books={this.state.books}
                       changeShelf={this.changeShelf}
                     />)}
-              </div>
-            )} />
-            <Route path='/create' component={SearchBar} />
-          </div>
-
         </div>
+        )} />
+        </Router>
+        <Router>
+        <Route path='/create' component={SearchBar} />      
+      </Router>
+      </div>
       </div>
     )
   }
