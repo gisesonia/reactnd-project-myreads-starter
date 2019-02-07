@@ -1,5 +1,5 @@
 import React from 'react'
-import {  BrowserRouter as Router, Route } from 'react-router-dom'
+import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './components/BookShelf'
 import SearchBar from './components/SearchBar'
@@ -58,14 +58,13 @@ class BooksApp extends React.Component {
           <Router>
             <Route exact path='/' render={() => (
               <div className="list-books-content">
-                {
-                  bookshelf.map(shelf =>
+                {bookshelf.map(shelf =>
                     <BookShelf key={shelf.id}
                       titulo={shelf.title}
                       value={shelf.value}
                       books={this.state.books}
                       newShelf={this.newShelf}
-                    />)}
+                  />)}
               </div>
             )} />
           </Router>
