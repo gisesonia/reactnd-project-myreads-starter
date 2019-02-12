@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Book from "./Book";
 
 class BookShelf extends Component {
@@ -6,6 +7,7 @@ class BookShelf extends Component {
     let filteredBooks = this.props.books.filter(
       book => book.shelf === this.props.value
     );
+
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.titulo}</h2>
@@ -17,6 +19,9 @@ class BookShelf extends Component {
               </li>
             ))}
           </ol>
+        </div>
+        <div className="open-search">
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     );
