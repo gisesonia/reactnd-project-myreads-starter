@@ -1,6 +1,6 @@
 # Projeto 1 - Udacity MyReads Project
 
-Projeto clonado do repositório da Udacity do curso React Fundamentals.
+Projeto desenvolvido com base no repositório da Udacity do curso React Fundamentals. As funções e funcionamento foram adicionados depois com o decorrer do curso.
 
 ## Configuração de ambiente de desenvolvimento
 
