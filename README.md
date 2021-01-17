@@ -2,6 +2,8 @@
 
 Projeto desenvolvido com base no repositório da Udacity do curso React Fundamentals. As funções e funcionamento foram adicionados depois com o decorrer do curso.
 
+[Site do projeto Udacity MyReads]https://reactreader.netlify.app/
+
 ## Configuração de ambiente de desenvolvimento
 
 Setando a aplicação:
